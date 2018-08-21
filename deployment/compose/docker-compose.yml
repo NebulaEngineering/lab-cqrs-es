@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  broker-mqtt:
+    image: eclipse-mosquitto
+    ports:
+      - "9001:9001"
+      - "1883:1883"
+    volumes:
+      - broker_mqtt_data:/mosquitto/data            
+  store-mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    environment: 
+        - storageEngine=wiredTiger
+    volumes: 
+      - store_mongo_db:/data/db  
+volumes: 
+  store_mongo_db:
+  broker_mqtt_data:
