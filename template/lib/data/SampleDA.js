@@ -8,14 +8,6 @@ const CollectionName = "Sample";
 
 class SampleDA {
 
-  /**
-   * gets DashBoardDevicesAlarmReport by type
-   * @param {string} type
-   */
-  static getDashBoardDevicesAlarmReport$(evt) {
-
-  }
-
 
   static findAll$() {
     const collection = mongoDB.db.collection(CollectionName);

@@ -8,22 +8,17 @@ const eventStore = require('../tools/EventSourcing')().eventStore;
 
 let instance;
 
-class DashBoardDevices {
+class SampleDomain {
   constructor() {
   }
-
-  processSample$(evt) {
-    return Rx.Observable.of(evt);
-  }
-
-  findAllSamples$() {
-    return SampleDA.findAll$();
-  }
-
 
   //////////////////////////////////////////////////////////////////
   //////////////////////// C Q R S /////////////////////////////////
   //////////////////////////////////////////////////////////////////
+
+  findAllSamples$() {
+    return SampleDA.findAll$();
+  }
 
   addSample$({ title, author }) {
     const id = uuidv4();
@@ -66,7 +61,7 @@ class DashBoardDevices {
 
 module.exports = () => {
   if (!instance) {
-    instance = new DashBoardDevices();
+    instance = new SampleDomain();
     console.log("SampleDomain Singleton created");
   }
   return instance;
