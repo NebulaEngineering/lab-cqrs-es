@@ -28,6 +28,14 @@ class TracksDA {
       .mapTo(track);
   }
 
+  static updateLastPostId$(trackId,lastPostId) {
+    const collection = mongoDB.db.collection(CollectionName);
+    return Rx.Observable.defer(() => collection.updateOne( {_id:trackId}, {"$set" : { "lastPostId": lastPostId }} ))
+      .mapTo(trackId);
+  }
+
+  
+
 }
 
 module.exports = TracksDA 
