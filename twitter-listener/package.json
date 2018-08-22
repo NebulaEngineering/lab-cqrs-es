@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/NebulaEngineering/lab-cqrs-es#readme",
   "dependencies": {
+    "9gag": "^2.0.0",
     "@nebulae/event-store": "^0.3.4",
     "apollo-server": "^2.0.5",
     "apollo-server-express": "^2.0.4",
