@@ -1,6 +1,6 @@
 const { ApolloServer, gql } = require('apollo-server');
 const Rx = require('rxjs');
-const twitterListenerDomain = require('./../domain/TwitterListenerDomain')();
+const twitterListenerDomain = require('./../domain/PostCounterDomain')();
 
 
 const typeDefs = gql`
@@ -23,12 +23,6 @@ const typeDefs = gql`
     twitterTracks: [TwitterTrack]
   }
 
-  type Mutation {
-    addTwitterTrack(name: String): Event
-    removeTwitterTrack(name: String): Event
-  }
-
-
 `;
 
 // Resolvers define the technique for fetching the types in the
@@ -36,11 +30,7 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     twitterTracks: () => twitterListenerDomain.findAllTracks$().toPromise(),
-  },
-  Mutation: {
-    addTwitterTrack: (root, args, context) => twitterListenerDomain.addTrack$(args).toPromise(),
-    removeTwitterTrack: (root, args, context) => twitterListenerDomain.removeTrack$(args).toPromise(),
-  },
+  }
 };
 
 
