@@ -2,7 +2,7 @@
 const Rx = require("rxjs");
 const eventSourcing = require("../tools/EventSourcing")();
 const twitterListenerDomain = require("../domain/PostCounterDomain")();
-const BACKEND_KEY = 'PostTrackCounter'
+const BACKEND_KEY = '098765432345'
 
 let instance;
 
