@@ -1,8 +1,8 @@
 "use strict";
 const Rx = require("rxjs");
 const eventSourcing = require("../tools/EventSourcing")();
-const twitterListenerDomain = require("../domain/PostCounterDomain")();
-const BACKEND_KEY = '098765432345'
+const nineGagListenerDomain = require("../domain/PostCounterDomain")();
+const BACKEND_KEY = 'PostTrackCounter'
 
 let instance;
 
@@ -16,8 +16,8 @@ class EventStoreService {
   generateFunctionMap() {
     return {
       MessagePosted: {
-        fn: twitterListenerDomain.processMessagePosted$,
-        obj: twitterListenerDomain
+        fn: nineGagListenerDomain.processMessagePosted$,
+        obj: nineGagListenerDomain
       }
     };
   }

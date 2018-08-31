@@ -1,6 +1,6 @@
 const { ApolloServer, gql } = require('apollo-server');
 const Rx = require('rxjs');
-const twitterListenerDomain = require('./../domain/PostCounterDomain')();
+const nineGagListenerDomain = require('./../domain/PostCounterDomain')();
 
 
 const typeDefs = gql`
@@ -14,13 +14,13 @@ const typeDefs = gql`
     av: Int
     }
   
-  type TwitterTrack {
+  type NineGagTrack {
     id: String,
     name: String
   }
 
   type Query {
-    twitterTracks: [TwitterTrack]
+    nineGagTracks: [NineGagTrack]
   }
 
 `;
@@ -29,7 +29,7 @@ const typeDefs = gql`
 // schema.  We'll retrieve books from the "books" array above.
 const resolvers = {
   Query: {
-    twitterTracks: () => twitterListenerDomain.findAllTracks$().toPromise(),
+    nineGagTracks: () => nineGagListenerDomain.findAllTracks$().toPromise(),
   }
 };
 

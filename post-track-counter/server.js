@@ -9,7 +9,7 @@ const eventStoreService = require('./lib/service/EventStoreService')();
 const mongoDB = require('./lib/data/MongoDB')();
 const GraphQL = require('./lib/service/GraphQL');
 const Rx = require('rxjs');
-const twitterListenerDomain = require('./lib/domain/PostCounterDomain')();
+const nineGagListenerDomain = require('./lib/domain/PostCounterDomain')();
 
 
 const start = () => {
@@ -21,7 +21,7 @@ const start = () => {
         // Syncs event-store state
         eventStoreService.syncState$(),
         GraphQL.start$(),
-        twitterListenerDomain.start$()
+        nineGagListenerDomain.start$()
     ).subscribe(
         (evt) => {
             console.log(evt);
