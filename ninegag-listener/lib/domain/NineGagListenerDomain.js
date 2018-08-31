@@ -9,7 +9,7 @@ const nineGagDA = require('../data/NineGagDA')();
 
 let instance;
 
-class TwitterListenerDomain {
+class NineGagListenerDomain {
 
   constructor() {
 
@@ -28,9 +28,9 @@ class TwitterListenerDomain {
     const id = name;
     const event = new Event(
       {
-        eventType: 'TwitterTrackAdded',
+        eventType: 'NineGagTrackAdded',
         eventTypeVersion: 1,
-        aggregateType: 'TwitterTrack',
+        aggregateType: 'NineGagTrack',
         aggregateId: id,
         data: { name, id },
         user: 'SomeOne'
@@ -46,9 +46,9 @@ class TwitterListenerDomain {
     const id = name;
     const event = new Event(
       {
-        eventType: 'TwitterTrackRemoved',
+        eventType: 'NineGagTrackRemoved',
         eventTypeVersion: 1,
-        aggregateType: 'TwitterTrack',
+        aggregateType: 'NineGagTrack',
         aggregateId: id,
         data: { name, id },
         user: 'SomeOne'
@@ -64,7 +64,7 @@ class TwitterListenerDomain {
   ////////////////////// EVENT SOURCING ////////////////////////////
   //////////////////////////////////////////////////////////////////
 
-  processTwitterTrackAdded$(evt) {
+  processNineGagTrackAdded$(evt) {
     return Rx.Observable.of(evt)
       .map(evt => {
         return {
@@ -75,7 +75,7 @@ class TwitterListenerDomain {
       .mergeMap(track => TracksDA.createTrack$(track));
   }
 
-  processTwitterTrackRemoved$(evt) {
+  processNineGagTrackRemoved$(evt) {
     return Rx.Observable.of(evt)
       .map(evt => {
         return {
@@ -143,8 +143,8 @@ class TwitterListenerDomain {
 
 module.exports = () => {
   if (!instance) {
-    instance = new TwitterListenerDomain();
-    console.log("TwitterListenerDomain Singleton created");
+    instance = new NineGagListenerDomain();
+    console.log("NineGagListenerDomain Singleton created");
   }
   return instance;
 };

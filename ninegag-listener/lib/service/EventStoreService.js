@@ -1,8 +1,8 @@
 "use strict";
 const Rx = require("rxjs");
 const eventSourcing = require("../tools/EventSourcing")();
-const twitterListenerDomain = require("../domain/TwitterListenerDomain")();
-const BACKEND_KEY = 'TwitterListener'
+const nineGagListenerDomain = require("../domain/NineGagListenerDomain")();
+const BACKEND_KEY = 'NineGagListener'
 
 let instance;
 
@@ -15,13 +15,13 @@ class EventStoreService {
 
   generateFunctionMap() {
     return {
-      TwitterTrackAdded: {
-        fn: twitterListenerDomain.processTwitterTrackAdded$,
-        obj: twitterListenerDomain
+      NineGagTrackAdded: {
+        fn: nineGagListenerDomain.processNineGagTrackAdded$,
+        obj: nineGagListenerDomain
       },
-      TwitterTrackRemoved: {
-        fn: twitterListenerDomain.processTwitterTrackRemoved$,
-        obj: twitterListenerDomain
+      NineGagTrackRemoved: {
+        fn: nineGagListenerDomain.processNineGagTrackRemoved$,
+        obj: nineGagListenerDomain
       }
     };
   }
@@ -32,12 +32,12 @@ class EventStoreService {
   generateAggregateEventsArray() {
     return [      
       {
-        aggregateType: "TwitterTrack",
-        eventType: "TwitterTrackAdded"
+        aggregateType: "NineGagTrack",
+        eventType: "NineGagTrackAdded"
       },
       {
-        aggregateType: "TwitterTrack",
-        eventType: "TwitterTrackRemoved"
+        aggregateType: "NineGagTrack",
+        eventType: "NineGagTrackRemoved"
       }
     ]
   }
