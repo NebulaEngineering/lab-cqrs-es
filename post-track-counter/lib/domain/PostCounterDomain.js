@@ -28,9 +28,9 @@ class PostCounterDomain {
     const id = name;
     const event = new Event(
       {
-        eventType: 'TwitterTrackAdded',
+        eventType: 'NineGagTrackAdded',
         eventTypeVersion: 1,
-        aggregateType: 'TwitterTrack',
+        aggregateType: 'NineGagTrack',
         aggregateId: id,
         data: { name, id },
         user: 'SomeOne'
@@ -46,9 +46,9 @@ class PostCounterDomain {
     const id = name;
     const event = new Event(
       {
-        eventType: 'TwitterTrackRemoved',
+        eventType: 'NineGagTrackRemoved',
         eventTypeVersion: 1,
-        aggregateType: 'TwitterTrack',
+        aggregateType: 'NineGagTrack',
         aggregateId: id,
         data: { name, id },
         user: 'SomeOne'

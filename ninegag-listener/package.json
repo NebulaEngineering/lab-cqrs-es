@@ -1,7 +1,7 @@
 {
-  "name": "@nebulaengineering/lab-cqrs-es-twitter-listener",
+  "name": "@nebulaengineering/lab-cqrs-es-ninegag-listener",
   "version": "1.0.0",
-  "description": "pseudo MicroService: listen from twitter and emits to events",
+  "description": "pseudo MicroService: listen from 9gag and emits to events",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

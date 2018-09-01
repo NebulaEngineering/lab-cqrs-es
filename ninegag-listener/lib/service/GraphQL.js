@@ -1,6 +1,6 @@
 const { ApolloServer, gql } = require('apollo-server');
 const Rx = require('rxjs');
-const twitterListenerDomain = require('./../domain/TwitterListenerDomain')();
+const nineGagListenerDomain = require('./../domain/NineGagListenerDomain')();
 
 
 const typeDefs = gql`
@@ -14,18 +14,18 @@ const typeDefs = gql`
     av: Int
     }
   
-  type TwitterTrack {
+  type NineGagTrack {
     id: String,
     name: String
   }
 
   type Query {
-    twitterTracks: [TwitterTrack]
+    NineGagTracks: [NineGagTrack]
   }
 
   type Mutation {
-    addTwitterTrack(name: String): Event
-    removeTwitterTrack(name: String): Event
+    addNineGagTrack(name: String): Event
+    removeNineGagTrack(name: String): Event
   }
 
 
@@ -35,11 +35,11 @@ const typeDefs = gql`
 // schema.  We'll retrieve books from the "books" array above.
 const resolvers = {
   Query: {
-    twitterTracks: () => twitterListenerDomain.findAllTracks$().toPromise(),
+    NineGagTracks: () => nineGagListenerDomain.findAllTracks$().toPromise(),
   },
   Mutation: {
-    addTwitterTrack: (root, args, context) => twitterListenerDomain.addTrack$(args).toPromise(),
-    removeTwitterTrack: (root, args, context) => twitterListenerDomain.removeTrack$(args).toPromise(),
+    addNineGagTrack: (root, args, context) => nineGagListenerDomain.addTrack$(args).toPromise(),
+    removeNineGagTrack: (root, args, context) => nineGagListenerDomain.removeTrack$(args).toPromise(),
   },
 };
 
